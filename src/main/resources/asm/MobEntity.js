@@ -13,15 +13,15 @@ function initializeCoreMod() {
     	'MobEntity': {
     		'target': {
     			'type': 'CLASS',
-    			'name': 'net.minecraft.entity.MobEntity'
+    			'name': 'net.minecraft.world.entity.Mob'
     		},
     		'transformer': function(classNode) {
     			var count = 0
-    			var fn = asmapi.mapMethod('func_233657_b_')
+    			var fn = asmapi.mapMethod('m_21468_') // setItemSlotAndDropWhenKilled
     			for (var i = 0; i < classNode.methods.size(); ++i) {
     				var obj = classNode.methods.get(i)
     				if (obj.name == fn) {
-    					patch_func_233657_b(obj)
+    					patch_m_21468_(obj)
     					count++
     				}
     			}
@@ -34,9 +34,9 @@ function initializeCoreMod() {
 }
 
 // add the test: if (!(MyConfig.check(stack)))
-function patch_func_233657_b(obj) {
-	var f1 = asmapi.mapField('field_82179_bU') // persistenceRequired
-	var n1 = "net/minecraft/entity/MobEntity"
+function patch_m_21468_(obj) {
+	var f1 = asmapi.mapField('f_21353_') // persistenceRequired
+	var n1 = "net/minecraft/world/entity/Mob"
 	var node = asmapi.findFirstInstruction(obj, opc.PUTFIELD)
 	if (node && node.owner == n1 && node.name == f1) {
 		var node2 = node.getPrevious()
@@ -44,7 +44,7 @@ function patch_func_233657_b(obj) {
 		if (node2 && node2.getOpcode() == opc.ICONST_1 && lb1 && lb1.getType() == AbstractInsnNode.LABEL)
 		{
 			node2 = node2.getPrevious()
-			var desc = "(Lnet/minecraft/item/ItemStack;)Z"
+			var desc = "(Lnet/minecraft/world/item/ItemStack;)Z"
 			var op1 = new VarInsnNode(opc.ALOAD, 2)
 			var op2 = asmapi.buildMethodCall("com/lupicus/mobpc/config/MyConfig", "check", desc, asmapi.MethodType.STATIC)
 			var op3 = new JumpInsnNode(opc.IFNE, lb1)

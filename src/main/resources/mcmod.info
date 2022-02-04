@@ -1,0 +1,16 @@
+[
+{
+  "modid": "mobpc",
+  "name": "Mob Population Control",
+  "description": "Mob Population Control mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://www.curseforge.com/minecraft/mc-mods/mob-population-control",
+  "updateUrl": "",
+  "authorList": ["Lupicus", "MacTso"],
+  "credits": "",
+  "logoFile": "logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

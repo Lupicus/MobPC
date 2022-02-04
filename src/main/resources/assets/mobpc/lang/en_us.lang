@@ -1,0 +1,2 @@
+mobpc.general.includeitems=Include Items
+mobpc.general.includeitems.tooltip=Include Items that prevent setting the persistent flag when picked up

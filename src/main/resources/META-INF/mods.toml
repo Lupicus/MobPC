@@ -1,23 +1,24 @@
 modLoader="javafml"
-loaderVersion="[38,)"
+loaderVersion="[41,)"
 license="MIT License"
 [[mods]]
 modId="mobpc"
 version="${file.jarVersion}"
 displayName="Mob Population Control"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/mob-population-control"
+displayTest="IGNORE_SERVER_VERSION"
 logoFile="logo.png"
 authors="Lupicus, MacTso"
 description='''Mob Population Control Mod'''
 [[dependencies.mobpc]]
     modId="forge"
     mandatory=true
-    versionRange="[38,)"
+    versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.mobpc]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18,1.19)"
+    versionRange="[1.19,1.20)"
     ordering="NONE"
     side="BOTH"

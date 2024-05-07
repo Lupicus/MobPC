@@ -5,7 +5,6 @@ var LabelNode = Java.type('org.objectweb.asm.tree.LabelNode')
 var VarInsnNode = Java.type('org.objectweb.asm.tree.VarInsnNode')
 var FieldInsnNode = Java.type('org.objectweb.asm.tree.FieldInsnNode')
 var JumpInsnNode = Java.type('org.objectweb.asm.tree.JumpInsnNode')
-var TypeInsnNode = Java.type('org.objectweb.asm.tree.TypeInsnNode')
 var InsnNode = Java.type('org.objectweb.asm.tree.InsnNode')
 
 function initializeCoreMod() {
@@ -17,11 +16,11 @@ function initializeCoreMod() {
     		},
     		'transformer': function(classNode) {
     			var count = 0
-    			var fn = asmapi.mapMethod('m_21468_') // setItemSlotAndDropWhenKilled
+    			var fn = "setItemSlotAndDropWhenKilled"
     			for (var i = 0; i < classNode.methods.size(); ++i) {
     				var obj = classNode.methods.get(i)
     				if (obj.name == fn) {
-    					patch_m_21468_(obj)
+    					patch_setItemSlotAndDrop(obj)
     					count++
     				}
     			}
@@ -34,8 +33,8 @@ function initializeCoreMod() {
 }
 
 // add the test: if (!(MyConfig.check(stack)))
-function patch_m_21468_(obj) {
-	var f1 = asmapi.mapField('f_21353_') // persistenceRequired
+function patch_setItemSlotAndDrop(obj) {
+	var f1 = "persistenceRequired"
 	var n1 = "net/minecraft/world/entity/Mob"
 	var node = asmapi.findFirstInstruction(obj, opc.PUTFIELD)
 	if (node && node.owner == n1 && node.name == f1) {

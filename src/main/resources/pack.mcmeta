@@ -1,8 +1,6 @@
 {
     "pack": {
-        "description": {
-            "text": "Mob Population Control resources"
-        },
-        "pack_format": 15
+        "description": "Mob Population Control resources",
+        "pack_format": 32
     }
 }

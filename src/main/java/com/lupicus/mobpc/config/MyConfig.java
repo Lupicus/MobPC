@@ -82,7 +82,7 @@ public class MyConfig
 			for (String entry : list)
 			{
 				try {
-					ResourceLocation key = new ResourceLocation(entry);
+					ResourceLocation key = ResourceLocation.parse(entry);
 					if (reg.containsKey(key))
 					{
 						Item item = reg.getValue(key);

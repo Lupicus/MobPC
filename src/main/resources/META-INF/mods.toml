@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[51,)"
+loaderVersion="[56,)"
 license="MIT License"
 [[mods]]
 modId="mobpc"
@@ -13,12 +13,12 @@ description='''Mob Population Control Mod'''
 [[dependencies.mobpc]]
     modId="forge"
     mandatory=true
-    versionRange="[51,)"
+    versionRange="[56,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.mobpc]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.21,1.22)"
+    versionRange="[1.21.6,1.22)"
     ordering="NONE"
     side="BOTH"

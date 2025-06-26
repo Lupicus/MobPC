@@ -17,7 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.common.ForgeConfigSpec.ConfigValue;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.config.ModConfigEvent;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -47,9 +47,12 @@ public class MyConfig
 	@SubscribeEvent
 	public static void onModConfigEvent(final ModConfigEvent configEvent)
 	{
+		if (configEvent instanceof ModConfigEvent.Unloading)
+			return;
 		if (configEvent.getConfig().getSpec() == MyConfig.COMMON_SPEC)
 		{
-			bakeConfig();
+			if (MyConfig.COMMON_SPEC.isLoaded())
+				bakeConfig();
 		}
 	}
 

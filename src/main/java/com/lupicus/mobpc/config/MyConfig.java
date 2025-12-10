@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import com.lupicus.mobpc.Main;
 import com.mojang.logging.LogUtils;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -85,7 +85,7 @@ public class MyConfig
 			for (String entry : list)
 			{
 				try {
-					ResourceLocation key = ResourceLocation.parse(entry);
+					Identifier key = Identifier.parse(entry);
 					if (reg.containsKey(key))
 					{
 						Item item = reg.getValue(key);
